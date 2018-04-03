@@ -8,11 +8,15 @@ public class NPCMove : TacticsMove {
 
 	// Use this for initialization
 	void Start () {
-		Init();
+
+        
+
+        Init();
 
 		anim = GetComponent<Animator>();
 
-	}
+        healthText.UpdateHealth(health, 0);
+    }
 	
 	// Update is called once per frame
 	void Update () {

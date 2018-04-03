@@ -93,19 +93,23 @@ public class PlayerMove : TacticsMove {
 					NPCMove npc = hit.collider.GetComponent<NPCMove>();
 
 					Debug.Log(currentWeapon);
+                    if (Physics.Raycast(transform.position, (npc.transform.position - transform.position), out hit, 10000))
+                    {
 
-					if(!npc.killed && hit.transform.tag != "Wall" && !npc.GetComponent<TacticsMove>().killed){
-						//npc.Kill();
-						npc.Shoot(transform.position, weapons[currentWeapon]);
+                        if (!npc.killed && hit.transform.tag != "Wall" && !npc.GetComponent<TacticsMove>().killed)
+                        {
+                            //npc.Kill();
+                            npc.Shoot(transform.position, weapons[currentWeapon]);
 
-						transform.LookAt(npc.transform);
-						transform.Rotate(transform.rotation.x, transform.rotation.y, 0);
+                            transform.LookAt(npc.transform);
+                            transform.Rotate(transform.rotation.x, transform.rotation.y, 0);
 
-						anim.Play(weapons[currentWeapon].GetComponent<WeaponStats>().shootAnim);
+                            anim.Play(weapons[currentWeapon].GetComponent<WeaponStats>().shootAnim);
 
 
-						moveCount++;
-					}
+                            moveCount++;
+                        }
+                    }
 					// if(moveCount == moves){
 					// 	moveCount = 0;
 					// 	anim.Play(weapons[currentWeapon].GetComponent<WeaponStats>().idleAnim);

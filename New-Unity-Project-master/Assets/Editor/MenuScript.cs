@@ -30,4 +30,6 @@ public class MenuScript {
 			t.GetComponent<Tile>().fullCover = fullCover;
 		}
 	}
+
+  
 }

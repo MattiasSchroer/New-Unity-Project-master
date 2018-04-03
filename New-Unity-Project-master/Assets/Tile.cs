@@ -88,6 +88,7 @@ public class Tile : MonoBehaviour {
 			GetComponent<Renderer>().material.color = Color.green;
 		}
 		else if(selectable){
+            Debug.Log("TURN RED!!!!");
 			GetComponent<Renderer>().material.color = Color.red;
 
 			// if(northCover == 2){

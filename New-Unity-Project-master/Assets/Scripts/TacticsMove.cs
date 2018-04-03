@@ -50,7 +50,7 @@ public class TacticsMove : MonoBehaviour {
 
 	public Health healthText;
 
-	
+    public AudioSource gunShot;
 
 	protected void Init(){
 		tiles = GameObject.FindGameObjectsWithTag("Tile");
@@ -388,8 +388,9 @@ public class TacticsMove : MonoBehaviour {
 
 		for(int i = 0; i < attackerWep.GetComponent<WeaponStats>().rof; i++){
 
-			//anim.Play(attackerWep.GetComponent<WeaponStats>().shootAnim);
-
+            //anim.Play(attackerWep.GetComponent<WeaponStats>().shootAnim);
+            gunShot.Play();
+            StartCoroutine(Shooting());
 			Debug.Log("Shooting" + attackerWep.GetComponent<WeaponStats>().shootAnim);
 
 			if(p.x > transform.position.x){
@@ -430,7 +431,14 @@ public class TacticsMove : MonoBehaviour {
 		}
 	}
 
-	public void CheckCover(){
+    IEnumerator Shooting()
+    {
+
+        yield return new WaitForSecondsRealtime(1);
+
+    }
+
+    public void CheckCover(){
 		Tile CT;
 
 		RaycastHit hit;
